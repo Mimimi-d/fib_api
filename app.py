@@ -33,7 +33,7 @@ def handle_other_methods():
 
 @app.errorhandler(404)
 def not_found_error(error):
-    return jsonify({'status': 404, 'message': 'Not Found. Please '}), 404
+    return jsonify({'status': 404, 'message': 'Not Found.'}), 404
 
 
 if __name__ == "__main__":
