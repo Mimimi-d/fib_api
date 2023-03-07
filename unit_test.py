@@ -40,4 +40,9 @@ def test_fib_method_not_allowed(client):
 def test_unknown_route(client):
     res = client.get('/unknown')
     assert res.status_code == 404
-    assert json.loads(res.data) == {'status': 404, 'message': 'Not Found. Please '}
+    assert json.loads(res.data) == {'status': 404, 'message': 'Not Found.'}
+
+def test_timeout_error(client):
+    res = client.get('/fib?n=999999')
+    assert res.status_code == 504
+    assert json.loads(res.data) == {'status': 504, 'message':'TimeoutError'}
